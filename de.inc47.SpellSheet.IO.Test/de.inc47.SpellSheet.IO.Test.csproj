@@ -45,10 +45,14 @@
   <ItemGroup>
     <Compile Include="CharacterImporterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpellsImporterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="TestFiles\character.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TestFiles\spells.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

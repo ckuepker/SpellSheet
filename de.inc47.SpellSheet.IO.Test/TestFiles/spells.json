@@ -1,0 +1,20 @@
+﻿[
+  {
+    "Name": "Corpofrigo",
+    "Probe1": "CH",
+    "Probe2": "GE",
+    "Probe3": "KO",
+    "ZfW": 15,
+    "ZD": 2,
+    "ZDEinheit": "AR"
+  },
+  {
+    "Name": "Ignifaxius",
+    "Probe1": "KL",
+    "Probe2": "FF",
+    "Probe3": "KO",
+    "ZfW": 11,
+    "ZD": 4,
+    "ZDEinheit": "AR"
+  }
+]

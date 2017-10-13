@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="CharacterImporter.cs" />
     <Compile Include="ICharacterImporter.cs" />
+    <Compile Include="ISpellsImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpellsImporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
