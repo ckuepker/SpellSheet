@@ -13,7 +13,7 @@ namespace de.inc47.SpellSheet.IO.Test
     [Test]
     public void TestImport()
     {
-      string path = TestContext.CurrentContext.WorkDirectory + "/TestFiles/character.json";
+      string path = TestContext.CurrentContext.TestDirectory + "/TestFiles/character.json";
       ICharacterImporter sut = new CharacterImporter();
       ICharacterInformation info = sut.Import(path);
       Assert.NotNull(info);
@@ -28,7 +28,7 @@ namespace de.inc47.SpellSheet.IO.Test
       Assert.AreEqual(15, info.Fingerfertigkeit);
       Assert.AreEqual(52, info.Astralenergie);
       Assert.AreEqual(9, info.Magieresistenz);
-      Assert.AreEqual(3, info.Selbstbeherrschung);
+      Assert.AreEqual(4, info.Selbstbeherrschung);
     }
   }
 }

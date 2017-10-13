@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestFiles\character.json" />
+    <None Include="TestFiles\character.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\de.inc47.SpellSheet.IO\de.inc47.SpellSheet.IO.csproj">

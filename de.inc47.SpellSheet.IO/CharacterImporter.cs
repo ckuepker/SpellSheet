@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using Spells;
 
 namespace de.inc47.SpellSheet.IO
@@ -11,7 +13,8 @@ namespace de.inc47.SpellSheet.IO
   {
     public ICharacterInformation Import(string path)
     {
-      throw new NotImplementedException();
+      string json = File.ReadAllText(path);
+      return JsonConvert.DeserializeObject<CharacterInformation>(json);
     }
   }
 }
