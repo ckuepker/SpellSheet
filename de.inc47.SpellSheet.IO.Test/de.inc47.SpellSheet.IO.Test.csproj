@@ -57,9 +57,9 @@
       <Project>{E7E2418B-D152-4AD5-9E3C-16BFD18521FE}</Project>
       <Name>de.inc47.SpellSheet.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Spells\Spells.csproj">
+    <ProjectReference Include="..\Spells\de.inc47.Spells.csproj">
       <Project>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</Project>
-      <Name>Spells</Name>
+      <Name>de.inc47.Spells</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

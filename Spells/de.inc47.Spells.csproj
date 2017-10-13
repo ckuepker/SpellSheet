@@ -7,8 +7,8 @@
     <ProjectGuid>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Spells</RootNamespace>
-    <AssemblyName>Spells</AssemblyName>
+    <RootNamespace>de.inc47.Spells</RootNamespace>
+    <AssemblyName>de.inc47.Spells</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

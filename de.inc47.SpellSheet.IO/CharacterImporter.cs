@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+using de.inc47.Spells;
 using Newtonsoft.Json;
-using Spells;
 
 namespace de.inc47.SpellSheet.IO
 {

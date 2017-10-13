@@ -1,4 +1,4 @@
-﻿namespace Spells
+﻿namespace de.inc47.Spells
 {
   public class CharacterInformation : ICharacterInformation
   {

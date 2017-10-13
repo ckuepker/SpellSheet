@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using de.inc47.Spells;
 using NUnit.Framework;
-using Spells;
 
 namespace de.inc47.SpellSheet.IO.Test
 {

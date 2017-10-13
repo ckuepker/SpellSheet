@@ -48,13 +48,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Spells\Spells.csproj">
-      <Project>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</Project>
-      <Name>Spells</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Spells\de.inc47.Spells.csproj">
+      <Project>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</Project>
+      <Name>de.inc47.Spells</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
