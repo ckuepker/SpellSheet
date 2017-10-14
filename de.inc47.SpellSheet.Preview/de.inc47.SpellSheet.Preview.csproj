@@ -102,6 +102,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\de.inc47.SpellSheet.Preview.ViewModel\de.inc47.SpellSheet.Preview.ViewModel.csproj">
+      <Project>{0BEF2B38-D305-4AE9-95A1-76B5355A275A}</Project>
+      <Name>de.inc47.SpellSheet.Preview.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

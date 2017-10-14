@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using de.inc47.SpellSheet.Preview.ViewModel;
 
 namespace de.inc47.SpellSheet.Preview
 {
@@ -15,6 +16,7 @@ namespace de.inc47.SpellSheet.Preview
 
     public PdfPreview()
     {
+      DataContext = new PdfPreviewViewModel();
       InitializeComponent();
       _columns =  (21 * 2) - 5;
       _rows = (29 * 2) - 2;
