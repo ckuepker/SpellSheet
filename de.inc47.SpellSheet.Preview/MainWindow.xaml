@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:de.inc47.SpellSheet.Preview"
         mc:Ignorable="d"
-        Title="SpellSheet PDF Preview" Height="1000" Width="800">
+        Title="SpellSheet PDF Preview" MaxHeight="1080" MaxWidth="1920"
+        SizeToContent="WidthAndHeight" Left="100" Top="25">
   <Grid>
     <local:PdfPreview />
   </Grid>

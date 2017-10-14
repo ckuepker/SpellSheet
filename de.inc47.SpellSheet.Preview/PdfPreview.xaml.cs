@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.WindowsRuntime;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -12,7 +11,7 @@ namespace de.inc47.SpellSheet.Preview
   public partial class PdfPreview : UserControl
   {
     private readonly int _columns, _rows;
-    private readonly int _gridsize = 20;
+    private readonly int _gridsize = 15;
 
     public PdfPreview()
     {
@@ -46,7 +45,6 @@ namespace de.inc47.SpellSheet.Preview
           PreviewGrid.Children.Add(r);
         }
       }
-      
     }
   }
 }
