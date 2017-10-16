@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using de.inc47.Spells;
+using de.inc47.SpellSheet.IO;
+using de.inc47.SpellSheet.Render;
+using de.inc47.SpellSheet.Render.Enum;
 
 namespace de.inc47.SpellSheet.Preview
 {
@@ -23,6 +14,13 @@ namespace de.inc47.SpellSheet.Preview
     public MainWindow()
     {
       InitializeComponent();
+      ICharacterImporter cimport = new CharacterImporter();
+      ICharacterInformation ci = cimport.Import("character.json");
+      var muLabel = new Text(54,0,3,1,"MU",TextStyle.Label);
+      var muContent = new Text(55,0,3,1,""+ci.Mut,TextStyle.Default);
+
+      Preview.RenderText(muLabel);
+      Preview.RenderText(muContent);
     }
   }
 }

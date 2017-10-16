@@ -8,6 +8,6 @@
         Title="SpellSheet PDF Preview" MaxHeight="1080" MaxWidth="1920"
         SizeToContent="WidthAndHeight" Left="100" Top="25">
   <Grid>
-    <local:PdfPreview />
+    <local:PdfPreview x:Name="Preview" />
   </Grid>
 </Window>

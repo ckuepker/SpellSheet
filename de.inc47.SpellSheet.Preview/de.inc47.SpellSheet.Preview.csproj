@@ -103,6 +103,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\de.inc47.SpellSheet.IO\de.inc47.SpellSheet.IO.csproj">
+      <Project>{e7e2418b-d152-4ad5-9e3c-16bfd18521fe}</Project>
+      <Name>de.inc47.SpellSheet.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\de.inc47.SpellSheet.Preview.ViewModel\de.inc47.SpellSheet.Preview.ViewModel.csproj">
       <Project>{0BEF2B38-D305-4AE9-95A1-76B5355A275A}</Project>
       <Name>de.inc47.SpellSheet.Preview.ViewModel</Name>
@@ -110,6 +114,10 @@
     <ProjectReference Include="..\de.inc47.SpellSheet.Render\de.inc47.SpellSheet.Render.csproj">
       <Project>{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}</Project>
       <Name>de.inc47.SpellSheet.Render</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spells\de.inc47.Spells.csproj">
+      <Project>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</Project>
+      <Name>de.inc47.Spells</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
