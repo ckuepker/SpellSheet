@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet", "de.inc47.SpellSheet\de.inc47.SpellSheet.csproj", "{5FF0AF2F-FA9B-4BB4-AB8C-A950D501E560}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet.Preview", "de.inc47.SpellSheet.Preview\de.inc47.SpellSheet.Preview.csproj", "{A4BCCF6D-EC3B-4F1F-81A0-F0BEDCD20E01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet.Preview.ViewModel", "de.inc47.SpellSheet.Preview.ViewModel\de.inc47.SpellSheet.Preview.ViewModel.csproj", "{0BEF2B38-D305-4AE9-95A1-76B5355A275A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet.Render", "de.inc47.SpellSheet.Render\de.inc47.SpellSheet.Render.csproj", "{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{0BEF2B38-D305-4AE9-95A1-76B5355A275A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BEF2B38-D305-4AE9-95A1-76B5355A275A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BEF2B38-D305-4AE9-95A1-76B5355A275A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

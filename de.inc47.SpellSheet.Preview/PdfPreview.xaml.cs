@@ -3,14 +3,15 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using de.inc47.SpellSheet.Preview.ViewModel;
+using de.inc47.SpellSheet.Render;
 
 namespace de.inc47.SpellSheet.Preview
 {
   /// <summary>
   /// Interaction logic for PdfPreview.xaml
   /// </summary>
-  public partial class PdfPreview : UserControl
-  {
+  public partial class PdfPreview : UserControl, IRenderer
+    {
     private readonly int _columns, _rows;
     private readonly int _gridsize = 15;
 
@@ -48,5 +49,25 @@ namespace de.inc47.SpellSheet.Preview
         }
       }
     }
-  }
+
+      public void Render(IRenderable element)
+      {
+        throw new System.NotImplementedException();
+      }
+
+      public void RenderBlock(IBlock block)
+      {
+        throw new System.NotImplementedException();
+      }
+
+      public void RenderText(IText text)
+      {
+        throw new System.NotImplementedException();
+      }
+
+      public void RenderNumeric(INumeric numeric)
+      {
+        throw new System.NotImplementedException();
+      }
+    }
 }
