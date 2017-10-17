@@ -1,4 +1,6 @@
-﻿namespace de.inc47.Spells
+﻿using de.inc47.Spells.Enumerations;
+
+namespace de.inc47.Spells
 {
   public interface ICharacterInformation
   {
@@ -14,5 +16,6 @@
     int Magieresistenz { get; }
     int Selbstbeherrschung { get; }
     int Astralenergie { get; }
+    int GetEigenschaft(Eigenschaft e);
   }
 }
