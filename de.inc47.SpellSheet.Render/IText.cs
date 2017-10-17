@@ -4,7 +4,7 @@ namespace de.inc47.SpellSheet.Render
 {
   public interface IText : IRenderable
   {
-    string Text { get; }
+    string Content { get; }
     TextStyle Style { get; }
   }
 }
