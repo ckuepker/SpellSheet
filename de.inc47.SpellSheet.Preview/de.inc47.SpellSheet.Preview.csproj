@@ -115,6 +115,10 @@
       <Project>{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}</Project>
       <Name>de.inc47.SpellSheet.Render</Name>
     </ProjectReference>
+    <ProjectReference Include="..\de.inc47.SpellSheet.Template\de.inc47.SpellSheet.Template.csproj">
+      <Project>{0FADC663-03AA-4A7C-BF1B-E7EC2E3EC553}</Project>
+      <Name>de.inc47.SpellSheet.Template</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Spells\de.inc47.Spells.csproj">
       <Project>{0E8D7EE9-F94F-412F-8766-E03209D39D89}</Project>
       <Name>de.inc47.Spells</Name>

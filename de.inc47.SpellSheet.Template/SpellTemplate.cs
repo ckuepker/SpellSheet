@@ -22,14 +22,17 @@ namespace de.inc47.SpellSheet.Template
     private Block RenderEigenschaften(ICharacterInformation character)
     {
       var block = new Block();
+      int columnOffset = 0;
+      int width = 3;
       foreach (Eigenschaft e in Enum.GetValues(typeof(Eigenschaft)))
       {
         var eigenschaftsBlock = new Block();
-        var label = new Text(56, 0, 2, 1, e.ToString(), TextStyle.Label);
-        var text = new Text(57,0,2,1,character.GetEigenschaft(e).ToString(),TextStyle.Default);
+        var label = new Text(54, 6 + columnOffset, width, 1, e.ToString(), TextStyle.Label);
+        var text = new Text(55, 6 + columnOffset, width, 1, character.GetEigenschaft(e).ToString(), TextStyle.Default);
         eigenschaftsBlock.Children.Add(label);
         eigenschaftsBlock.Children.Add(text);
         block.Children.Add(eigenschaftsBlock);
+        columnOffset += width;
       }
       return block;
     }

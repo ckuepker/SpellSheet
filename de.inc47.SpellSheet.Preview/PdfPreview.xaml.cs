@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using de.inc47.SpellSheet.Preview.ViewModel;
 using de.inc47.SpellSheet.Render;
+using de.inc47.SpellSheet.Render.Enum;
 
 namespace de.inc47.SpellSheet.Preview
 {
@@ -60,19 +61,51 @@ namespace de.inc47.SpellSheet.Preview
 
     public void Render(IRenderable element)
     {
-      throw new System.NotImplementedException();
+      if (element is IBlock)
+      {
+        Render((IBlock)element);
+        return;
+      }
+      if (element is IText)
+      {
+        Render((IText)element);
+        return;
+      }
+      if (element is INumeric)
+      {
+        Render((INumeric)element);
+        return;
+      }
+      throw new ArgumentException(string.Format("Unsupported type received in renderer: {0}", element.GetType().FullName));
     }
 
-    public void RenderBlock(IBlock block)
+    public void Render(IBlock block)
     {
-      throw new System.NotImplementedException();
+      foreach (var child in block.Children)
+      {
+        this.Render(child);
+      }
     }
 
-    public void RenderText(IText text)
+    public void Render(IText text)
     {
       var tb = new TextBlock();
       tb.Text = text.Content;
-      //tb.Background = new SolidColorBrush(GetRandomColour());
+      switch (text.Style)
+      {
+        case TextStyle.Header:
+          tb.Style = (Style) FindResource("HeaderTextStyle");
+          break;
+        case TextStyle.Label:
+          tb.Style = (Style)FindResource("LabelTextStyle");
+          break;
+        case TextStyle.Default:
+          tb.Style = (Style)FindResource("DefaultTextStyle");
+          break;
+        default:
+          throw new ArgumentOutOfRangeException();
+      }
+      
       Grid.SetColumn(tb, text.Column);
       Grid.SetRow(tb, text.Row);
       Grid.SetColumnSpan(tb, text.Width);
@@ -81,7 +114,7 @@ namespace de.inc47.SpellSheet.Preview
       PreviewGrid.Children.Add(tb);
     }
 
-    public void RenderNumeric(INumeric numeric)
+    public void Render(INumeric numeric)
     {
       throw new System.NotImplementedException();
     }
@@ -98,7 +131,6 @@ namespace de.inc47.SpellSheet.Preview
         PreviewGrid.Children.Remove(rectangle);
       }
     }
-
 
     private Color GetRandomColour()
     {
