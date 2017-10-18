@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.IO;
@@ -18,8 +20,10 @@ namespace de.inc47.SpellSheet.Preview
       InitializeComponent();
       ICharacterImporter cimport = new CharacterImporter();
       ICharacterInformation ci = cimport.Import("character.json");
+      ISpellsImporter simport = new SpellsImporter();
+      IEnumerable<ISpell> spells = simport.Import("spells.json");
       ITemplate<Tuple<ISpell,ICharacterInformation>> template = new SpellTemplate();
-      var templatedBlock = template.Apply(new Tuple<ISpell, ICharacterInformation>(null, ci));
+      var templatedBlock = template.Apply(new Tuple<ISpell, ICharacterInformation>(spells.FirstOrDefault(), ci));
       Preview.Render(templatedBlock);
     }
   }

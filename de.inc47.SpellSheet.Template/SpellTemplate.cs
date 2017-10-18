@@ -15,8 +15,13 @@ namespace de.inc47.SpellSheet.Template
       var root = new Block();
 
       root.Children.Add(RenderEigenschaften(info));
-
+      root.Children.Add(RenderSpellName(spell.Name));
       return root;
+    }
+
+    private IRenderable RenderSpellName(string spellName)
+    {
+      return new Text(0,0,37,3, spellName, TextStyle.Header);
     }
 
     private Block RenderEigenschaften(ICharacterInformation character)

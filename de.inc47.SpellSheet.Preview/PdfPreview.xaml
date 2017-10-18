@@ -14,7 +14,11 @@
       
       <Style TargetType="{x:Type TextBlock}" x:Key="LabelTextStyle" BasedOn="{StaticResource DefaultTextStyle}">
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="TextAlignment" Value="Center" />
+      </Style>
+      
+      <Style TargetType="{x:Type TextBlock}" x:Key="HeaderTextStyle" BasedOn="{StaticResource DefaultTextStyle}">
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="VerticalAlignment" Value="Center" />
       </Style>
     </ResourceDictionary>
   </UserControl.Resources>
