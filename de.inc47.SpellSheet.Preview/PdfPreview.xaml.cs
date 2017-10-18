@@ -19,8 +19,8 @@ namespace de.inc47.SpellSheet.Preview
     private readonly int _columns, _rows;
     private readonly int _gridsize = 15;
 
-    private static readonly Random rand = new Random();
-    private IList<Rectangle> gridRectangles;
+    private static readonly Random Rand = new Random();
+    private IList<Rectangle> _gridRectangles;
 
     public PdfPreview()
     {
@@ -35,7 +35,7 @@ namespace de.inc47.SpellSheet.Preview
 
     private void InitGrid()
     {
-      gridRectangles = new List<Rectangle>();
+      _gridRectangles = new List<Rectangle>();
       for (int i = 0; i < _rows; i++)
       {
         var rd = new RowDefinition();
@@ -54,7 +54,7 @@ namespace de.inc47.SpellSheet.Preview
           Grid.SetRow(r, i);
           Grid.SetColumn(r, j);
           PreviewGrid.Children.Add(r);
-          gridRectangles.Add(r);
+          _gridRectangles.Add(r);
         }
       }
     }
@@ -121,7 +121,7 @@ namespace de.inc47.SpellSheet.Preview
 
     private void ClearGrid(int row, int column, int width, int height)
     {
-      var boxesToRemove = gridRectangles.Where(c =>
+      var boxesToRemove = _gridRectangles.Where(c =>
         Grid.GetColumn(c) >= column
         && Grid.GetColumn(c) < column + width
         && Grid.GetRow(c) >= row
@@ -135,7 +135,7 @@ namespace de.inc47.SpellSheet.Preview
     private Color GetRandomColour()
     {
       byte[] bytes = new byte[3];
-      rand.NextBytes(bytes);
+      Rand.NextBytes(bytes);
       return Color.FromRgb(bytes[0], bytes[1], bytes[2]);
     }
   }
