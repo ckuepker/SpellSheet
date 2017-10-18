@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet", "de.inc47.SpellSheet\de.inc47.SpellSheet.csproj", "{5FF0AF2F-FA9B-4BB4-AB8C-A950D501E560}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.Spells.Test", "de.inc47.Spells.Test\de.inc47.Spells.Test.csproj", "{8B1F15A9-465A-41ED-B062-60BC5DA94E34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet.Template.Test", "de.inc47.SpellSheet.Template.Test\de.inc47.SpellSheet.Template.Test.csproj", "{E6B1CD68-7A02-43CD-9F35-DE35412A95A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "de.inc47.SpellSheet.Preview.ViewModel.Test", "de.inc47.SpellSheet.Preview.ViewModel.Test\de.inc47.SpellSheet.Preview.ViewModel.Test.csproj", "{F275359A-5F3C-4732-BEA4-281029D17E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +79,10 @@ Global
 		{E6B1CD68-7A02-43CD-9F35-DE35412A95A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6B1CD68-7A02-43CD-9F35-DE35412A95A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6B1CD68-7A02-43CD-9F35-DE35412A95A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F275359A-5F3C-4732-BEA4-281029D17E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F275359A-5F3C-4732-BEA4-281029D17E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F275359A-5F3C-4732-BEA4-281029D17E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F275359A-5F3C-4732-BEA4-281029D17E71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +92,7 @@ Global
 		{95F81BDA-7CC2-407C-9AD0-04B7C9EB959B} = {16919BAD-E483-428A-8C4A-137B30AC493E}
 		{8B1F15A9-465A-41ED-B062-60BC5DA94E34} = {16919BAD-E483-428A-8C4A-137B30AC493E}
 		{E6B1CD68-7A02-43CD-9F35-DE35412A95A8} = {16919BAD-E483-428A-8C4A-137B30AC493E}
+		{F275359A-5F3C-4732-BEA4-281029D17E71} = {16919BAD-E483-428A-8C4A-137B30AC493E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CE6AC19-5457-4D59-9E18-4ACD236AAC6D}

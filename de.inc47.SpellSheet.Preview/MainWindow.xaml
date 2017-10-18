@@ -7,7 +7,24 @@
         mc:Ignorable="d"
         Title="SpellSheet PDF Preview" MaxHeight="1080" MaxWidth="1920"
         SizeToContent="WidthAndHeight" Left="100" Top="25">
-  <Grid>
-    <local:PdfPreview x:Name="Preview" />
+  <Window.Resources>
+    <ResourceDictionary>
+      <Style TargetType="{x:Type TextBlock}" x:Key="SettingsLabelTextBlockStyle">
+        <Setter Property="FontWeight" Value="Bold" />
+      </Style>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid x:Name="MainGrid">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="200" />
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+    <Grid Grid.Column="0" x:Name="SettingsGrid">
+      <StackPanel Orientation="Vertical">
+        <TextBlock Style="{StaticResource SettingsLabelTextBlockStyle}">Font:</TextBlock>
+        <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding AvailableFonts}" SelectedItem="{Binding SelectedFont}" />
+      </StackPanel>
+    </Grid>
+    <local:PdfPreview Grid.Column="1" x:Name="Preview" />
   </Grid>
 </Window>

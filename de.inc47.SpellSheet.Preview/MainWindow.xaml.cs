@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.IO;
+using de.inc47.SpellSheet.Preview.ViewModel;
 using de.inc47.SpellSheet.Render;
 using de.inc47.SpellSheet.Render.Enum;
 using de.inc47.SpellSheet.Template;
@@ -18,6 +19,7 @@ namespace de.inc47.SpellSheet.Preview
     public MainWindow()
     {
       InitializeComponent();
+      DataContext = new MainWindowViewModel();
       ICharacterImporter cimport = new CharacterImporter();
       ICharacterInformation ci = cimport.Import("character.json");
       ISpellsImporter simport = new SpellsImporter();
