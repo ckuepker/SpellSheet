@@ -81,9 +81,9 @@ namespace de.inc47.SpellSheet.Preview
 
     public void Render(IBlock block)
     {
-      foreach (var child in block.Children)
+      foreach (IRenderable child in block.Children)
       {
-        this.Render(child);
+        Render(child);
       }
     }
 
