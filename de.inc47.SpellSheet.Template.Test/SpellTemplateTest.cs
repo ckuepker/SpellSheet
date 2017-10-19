@@ -20,7 +20,7 @@ namespace de.inc47.SpellSheet.Template.Test
 
       foreach (Eigenschaft e in Enum.GetValues(typeof(Eigenschaft)))
       {
-        characterMock.Verify(c => c.GetEigenschaft(e), Times.Once);
+        characterMock.Verify(c => c.GetEigenschaft(e), Times.AtLeastOnce);
       }
     }
 
@@ -35,6 +35,30 @@ namespace de.inc47.SpellSheet.Template.Test
       var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
       
       spellMock.Verify(s => s.Name, Times.Once);
+    }
+
+    [Test]
+    public void TestApplyProbe()
+    {
+      var spellMock = new Mock<ISpell>();
+      spellMock.Setup(s => s.Probe1).Returns(Eigenschaft.CH).Verifiable();
+      spellMock.Setup(s => s.Probe2).Returns(Eigenschaft.KL).Verifiable();
+      spellMock.Setup(s => s.Probe3).Returns(Eigenschaft.FF).Verifiable();
+      var characterMock = new Mock<ICharacterInformation>();
+      characterMock.Setup(c => c.GetEigenschaft(Eigenschaft.CH)).Returns(14).Verifiable();
+      characterMock.Setup(c => c.GetEigenschaft(Eigenschaft.KL)).Returns(15).Verifiable();
+      characterMock.Setup(c => c.GetEigenschaft(Eigenschaft.FF)).Returns(12).Verifiable();
+
+      var sut = new SpellTemplate();
+      var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+
+      spellMock.Verify(s => s.Probe1,Times.AtLeastOnce);
+      spellMock.Verify(s => s.Probe2, Times.AtLeastOnce);
+      spellMock.Verify(s => s.Probe3, Times.AtLeastOnce);
+
+      characterMock.Verify(c => c.GetEigenschaft(Eigenschaft.CH), Times.AtLeastOnce);
+      characterMock.Verify(c => c.GetEigenschaft(Eigenschaft.KL), Times.AtLeastOnce);
+      characterMock.Verify(c => c.GetEigenschaft(Eigenschaft.FF), Times.AtLeastOnce);
     }
   }
 }

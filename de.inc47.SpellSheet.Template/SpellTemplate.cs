@@ -16,7 +16,24 @@ namespace de.inc47.SpellSheet.Template
 
       root.Children.Add(RenderEigenschaften(info));
       root.Children.Add(RenderSpellName(spell.Name));
+      root.Children.Add(RenderProbe(spell, info));
       return root;
+    }
+
+    private IRenderable RenderProbe(ISpell spell, ICharacterInformation info)
+    {
+      IBlock b = new Block();
+      string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(),
+        spell.Probe3.ToString());
+      b.Children.Add(new Text(4,0,4,1,probe,TextStyle.Label));
+      string probenWerte = string.Format("{0}/{1}/{2}{3}{4}",
+        info.GetEigenschaft(spell.Probe1),
+        info.GetEigenschaft(spell.Probe2),
+        info.GetEigenschaft(spell.Probe3),
+        spell.ZfW > 0 ? "+" : "-",
+        spell.ZfW);
+      b.Children.Add(new Text(5,0,4,1,probenWerte,TextStyle.Default));
+      return b;
     }
 
     private IRenderable RenderSpellName(string spellName)
