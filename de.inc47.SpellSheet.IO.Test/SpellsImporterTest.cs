@@ -23,15 +23,15 @@ namespace de.inc47.SpellSheet.IO.Test
       Assert.AreEqual(2, c.ZD);
       Assert.AreEqual(Zeiteinheit.AR, i.ZDEinheit);
       Assert.AreEqual(Eigenschaft.CH, c.Probe1);
-      //Assert.AreEqual(Eigenschaft.GE, c.Probe2);
-      //Assert.AreEqual(Eigenschaft.KO, c.Probe3);
+      Assert.AreEqual(Eigenschaft.GE, c.Probe2);
+      Assert.AreEqual(Eigenschaft.KO, c.Probe3);
       Assert.AreEqual("Ignifaxius", i.Name);
       Assert.AreEqual(11, i.ZfW);
       Assert.AreEqual(4, i.ZD);
       Assert.AreEqual(Zeiteinheit.AR, i.ZDEinheit);
       Assert.AreEqual(Eigenschaft.KL, i.Probe1);
-      //Assert.AreEqual(Eigenschaft.FF, i.Probe2);
-      //Assert.AreEqual(Eigenschaft.KO, i.Probe3);
+      Assert.AreEqual(Eigenschaft.FF, i.Probe2);
+      Assert.AreEqual(Eigenschaft.KO, i.Probe3);
     }
   }
 }
