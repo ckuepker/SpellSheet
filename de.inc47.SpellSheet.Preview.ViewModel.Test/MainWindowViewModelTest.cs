@@ -8,7 +8,7 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestGetAvailableFonts()
     {
-      var sut = new MainWindowViewModel();
+      IMainWindowViewModel sut = new MainWindowViewModel();
       var fonts = sut.AvailableFonts;
       Assert.AreEqual(2, fonts.Count);
       Assert.AreEqual("Morpheus",fonts[0]);
@@ -18,7 +18,7 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestGetSelectedFont()
     {
-      var sut = new MainWindowViewModel();
+      IMainWindowViewModel sut = new MainWindowViewModel();
       
       Assert.AreEqual("Morpheus", sut.SelectedFont, "Morpheus is default font family");
       Assert.IsTrue(sut.AvailableFonts.Contains(sut.SelectedFont));
@@ -27,7 +27,7 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestSetSelectedFont()
     {
-      var sut = new MainWindowViewModel();
+      IMainWindowViewModel sut = new MainWindowViewModel();
 
       sut.ShouldNotifyOn(s => s.SelectedFont).When(s => sut.SelectedFont = "Unzialish");
       Assert.AreEqual("Unzialish", sut.SelectedFont);
@@ -36,10 +36,19 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestSetSelectedFontToInvalid()
     {
-      var sut = new MainWindowViewModel();
+      IMainWindowViewModel sut = new MainWindowViewModel();
       string expectedFont = sut.SelectedFont;
       sut.ShouldNotNotifyOn(s => s.SelectedFont).When(s => sut.SelectedFont = "Invented font");
       Assert.AreEqual(expectedFont, sut.SelectedFont);
+    }
+
+    [Test]
+    public void TestShowGrid()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      Assert.IsTrue(sut.ShowGrid, "ShowGrid by default");
+
+      sut.ShouldNotifyOn(s => s.ShowGrid).When(s => sut.ShowGrid = false);
     }
   }
 }

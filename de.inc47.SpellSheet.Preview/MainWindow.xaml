@@ -23,6 +23,10 @@
       <StackPanel Orientation="Vertical">
         <TextBlock Style="{StaticResource SettingsLabelTextBlockStyle}">Font:</TextBlock>
         <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding AvailableFonts}" SelectedItem="{Binding SelectedFont}" />
+        <StackPanel Orientation="Horizontal">
+          <TextBlock Style="{StaticResource SettingsLabelTextBlockStyle}">Show Grid:</TextBlock>
+          <CheckBox x:Name="ShowGridCheckBox" IsChecked="{Binding ShowGrid}" />
+        </StackPanel>
       </StackPanel>
     </Grid>
     <local:PdfPreview Grid.Column="1" x:Name="Preview" />

@@ -7,5 +7,6 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
   {
     ObservableCollection<string> AvailableFonts { get; }
     string SelectedFont { get; set; }
+    bool ShowGrid { get; set; }
   }
 }

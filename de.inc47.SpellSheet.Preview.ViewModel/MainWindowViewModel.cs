@@ -11,10 +11,12 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     };
 
     private string _selectedFont;
+    private bool _showGrid;
 
     public MainWindowViewModel()
     {
       SelectedFont = AvailableFonts[0];
+      ShowGrid = true;
     }
 
     public ObservableCollection<string> AvailableFonts
@@ -32,6 +34,16 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
           _selectedFont = value;
           OnPropertyChanged("SelectedFont");
         }
+      }
+    }
+
+    public bool ShowGrid
+    {
+      get { return _showGrid; }
+      set
+      {
+        _showGrid = value;
+        OnPropertyChanged("ShowGrid");
       }
     }
   }
