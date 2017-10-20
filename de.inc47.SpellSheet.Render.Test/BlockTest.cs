@@ -36,7 +36,7 @@ namespace de.inc47.SpellSheet.Render.Test
       e2.Setup(m => m.Width).Returns(3).Verifiable();
       e2.Setup(m => m.Height).Returns(3).Verifiable();
 
-      var sut = new Block(new List<IRenderable> { e1.Object, e2.Object });
+      var sut = new Block("", new List<IRenderable> { e1.Object, e2.Object });
       Assert.AreEqual(2, sut.Children.Count);
       Assert.AreEqual(1, sut.Column);
       Assert.AreEqual(2, sut.Row);

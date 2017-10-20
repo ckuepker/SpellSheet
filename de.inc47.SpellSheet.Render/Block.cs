@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace de.inc47.SpellSheet.Render
@@ -7,14 +8,39 @@ namespace de.inc47.SpellSheet.Render
   {
     private List<IRenderable> _children;
 
-    public Block(List<IRenderable> children = null)
+    public Block(string name = "", List<IRenderable> children = null)
     {
+      Name = name;
       _children = children ?? new List<IRenderable>();
     }
 
     public List<IRenderable> Children {
       get { return _children; }
     }
+
+    public bool ContainsChild(Func<IRenderable,bool> condition)
+    {
+      var childBlocks = Children.OfType<IBlock>();
+      var childComponents = Children.Where(c => !(c is IBlock));
+      foreach (var c in childComponents)
+      {
+        if (condition(c))
+        {
+          return true;
+        }
+      }
+      foreach (var child in childBlocks)
+      {
+        if (child.ContainsChild(condition))
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public string Name { get; }
+
     public int Column {
       get { return Children.Any() ? Children.Select(c => c.Column).Min() : 0; }
     }
@@ -30,5 +56,7 @@ namespace de.inc47.SpellSheet.Render
     public int Height {
       get { return Children.Any() ? Children.Select(c => c.Row + c.Height).Max() - Children.Select(c => c.Row).Min() : 0; }
     }
+
+
   }
 }

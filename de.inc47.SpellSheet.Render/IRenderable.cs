@@ -2,6 +2,7 @@
 {
   public interface IRenderable
   {
+    string Name { get; }
     int Column { get; }
     int Row { get; }
     int Width { get; }

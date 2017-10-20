@@ -12,7 +12,7 @@ namespace de.inc47.SpellSheet.Template
     {
       var spell = data.Item1;
       var info = data.Item2;
-      var root = new Block();
+      var root = new Block("RootBlock");
 
       root.Children.Add(RenderEigenschaften(info));
       root.Children.Add(RenderSpellName(spell.Name));
@@ -22,7 +22,7 @@ namespace de.inc47.SpellSheet.Template
 
     private IRenderable RenderProbe(ISpell spell, ICharacterInformation info)
     {
-      IBlock b = new Block();
+      IBlock b = new Block("ProbeBlock");
       string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(),
         spell.Probe3.ToString());
       b.Children.Add(new Text(4,0,4,1,probe,TextStyle.Label));
@@ -43,12 +43,12 @@ namespace de.inc47.SpellSheet.Template
 
     private Block RenderEigenschaften(ICharacterInformation character)
     {
-      var block = new Block();
+      var block = new Block("EigenschaftenBlock");
       int columnOffset = 0;
       int width = 3;
       foreach (Eigenschaft e in Enum.GetValues(typeof(Eigenschaft)))
       {
-        var eigenschaftsBlock = new Block();
+        var eigenschaftsBlock = new Block(string.Format("Eigenschaft{0}Block", e.ToString()));
         var label = new Text(54, 6 + columnOffset, width, 1, e.ToString(), TextStyle.Label);
         var text = new Text(55, 6 + columnOffset, width, 1, character.GetEigenschaft(e).ToString(), TextStyle.Default);
         eigenschaftsBlock.Children.Add(label);
