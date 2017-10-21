@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Builder\IRenderableBuilder.cs" />
+    <Compile Include="Builder\RenderableBuilder.cs" />
     <Compile Include="IBlock.cs" />
     <Compile Include="INumeric.cs" />
     <Compile Include="IRenderable.cs" />
