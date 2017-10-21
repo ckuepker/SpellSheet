@@ -31,6 +31,10 @@ namespace de.inc47.SpellSheet.Render
       }
       foreach (var child in childBlocks)
       {
+        if (condition(child))
+        {
+          return true;
+        }
         if (child.ContainsChild(condition))
         {
           return true;

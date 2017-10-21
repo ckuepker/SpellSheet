@@ -26,8 +26,8 @@ namespace de.inc47.SpellSheet.Preview
     {
       DataContext = new PdfPreviewViewModel();
       InitializeComponent();
-      _columns = (21 * 2) - 5;
-      _rows = (29 * 2) - 2;
+      _columns = 37; //(21 * 2) - 5
+      _rows = 56; //(29 * 2) - 2;
       Width = _columns * _gridsize;
       Height = _rows * _gridsize;
       InitGrid();

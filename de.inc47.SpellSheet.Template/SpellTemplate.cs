@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using de.inc47.Spells;
 using de.inc47.Spells.Enumerations;
 using de.inc47.SpellSheet.Render;
@@ -8,6 +9,9 @@ namespace de.inc47.SpellSheet.Template
 {
   public class SpellTemplate : ITemplate<Tuple<ISpell, ICharacterInformation>>
   {
+    private readonly int AvailableRows = 56;
+    private readonly int AvailableColumns = 37;
+
     public IBlock Apply(Tuple<ISpell, ICharacterInformation> data)
     {
       var spell = data.Item1;
@@ -17,6 +21,7 @@ namespace de.inc47.SpellSheet.Template
       root.Children.Add(RenderEigenschaften(info));
       root.Children.Add(RenderSpellName(spell.Name));
       root.Children.Add(RenderProbe(spell, info));
+      root.Children.Add(RenderZfW(spell.ZfW));
       return root;
     }
 
@@ -25,20 +30,20 @@ namespace de.inc47.SpellSheet.Template
       IBlock b = new Block("ProbeBlock");
       string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(),
         spell.Probe3.ToString());
-      b.Children.Add(new Text(4,0,4,1,probe,TextStyle.Label));
+      b.Children.Add(new Text(4, 0, 4, 1, probe, TextStyle.Label));
       string probenWerte = string.Format("{0}/{1}/{2}{3}{4}",
         info.GetEigenschaft(spell.Probe1),
         info.GetEigenschaft(spell.Probe2),
         info.GetEigenschaft(spell.Probe3),
         spell.ZfW > 0 ? "+" : "-",
         spell.ZfW);
-      b.Children.Add(new Text(5,0,4,1,probenWerte,TextStyle.Default));
+      b.Children.Add(new Text(5, 0, 4, 1, probenWerte, TextStyle.Default));
       return b;
     }
 
     private IRenderable RenderSpellName(string spellName)
     {
-      return new Text(0,0,37,3, spellName, TextStyle.Header);
+      return new Text(0, 0, 37, 3, spellName, TextStyle.Header);
     }
 
     private Block RenderEigenschaften(ICharacterInformation character)
@@ -57,6 +62,12 @@ namespace de.inc47.SpellSheet.Template
         columnOffset += width;
       }
       return block;
+    }
+
+    private IBlock RenderZfW(int zfw)
+    {
+      var text = new Text(3, AvailableColumns - 4, 4, 4, string.Format("+{0}", zfw), TextStyle.Header);
+      return new Block("ZfW", new List<IRenderable> { text });
     }
   }
 }
