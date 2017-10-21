@@ -10,22 +10,28 @@
   <Window.Resources>
     <ResourceDictionary>
       <Style TargetType="{x:Type TextBlock}" x:Key="SettingsLabelTextBlockStyle">
+        <Setter Property="Foreground" Value="White" />
         <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Margin" Value="0,3,0,1"></Setter>
+      </Style>
+
+      <Style TargetType="{x:Type Window}" x:Key="MainWindowStyle">
+        <Setter Property="Background" Value="#263238" />
       </Style>
     </ResourceDictionary>
   </Window.Resources>
   <Grid x:Name="MainGrid">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="200" />
-      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
-    <Grid Grid.Column="0" x:Name="SettingsGrid">
-      <StackPanel Orientation="Vertical">
+    <Grid Grid.Column="0" x:Name="SettingsGrid" Background="#212b30">
+      <StackPanel Orientation="Vertical" Margin="5,5,5,5">
         <TextBlock Style="{StaticResource SettingsLabelTextBlockStyle}">Font:</TextBlock>
         <ComboBox x:Name="FontsComboBox" ItemsSource="{Binding AvailableFonts}" SelectedItem="{Binding SelectedFont}" />
         <StackPanel Orientation="Horizontal">
+          <CheckBox x:Name="ShowGridCheckBox" IsChecked="{Binding ShowGrid}" Margin="0,3,3,1"/>
           <TextBlock Style="{StaticResource SettingsLabelTextBlockStyle}">Show Grid:</TextBlock>
-          <CheckBox x:Name="ShowGridCheckBox" IsChecked="{Binding ShowGrid}" />
         </StackPanel>
       </StackPanel>
     </Grid>
