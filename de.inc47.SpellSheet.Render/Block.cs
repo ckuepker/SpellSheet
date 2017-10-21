@@ -8,9 +8,9 @@ namespace de.inc47.SpellSheet.Render
   {
     private List<IRenderable> _children;
 
-    public Block(string name = "", List<IRenderable> children = null)
+    public Block(string id = "", List<IRenderable> children = null)
     {
-      Name = name;
+      Id = id;
       _children = children ?? new List<IRenderable>();
     }
 
@@ -39,7 +39,7 @@ namespace de.inc47.SpellSheet.Render
       return false;
     }
 
-    public string Name { get; }
+    public string Id { get; }
 
     public int Column {
       get { return Children.Any() ? Children.Select(c => c.Column).Min() : 0; }

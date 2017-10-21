@@ -21,7 +21,7 @@ namespace de.inc47.SpellSheet.Template.Test
       IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
       spellMock.Verify(m => m.ZfW, Times.AtLeastOnce);
-      Assert.IsTrue(block.ContainsChild(r => r.Name == "ZfWBlock"));
+      Assert.IsTrue(block.ContainsChild(r => r.Id == "ZfW"));
     }
 
     [Test]
@@ -86,12 +86,12 @@ namespace de.inc47.SpellSheet.Template.Test
       ITemplate<Tuple<ISpell,ICharacterInformation>> sut = new SpellTemplate();
       var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
-      bool AssertBlockNamesRecursively(IBlock block)
+      bool AssertBlockIdsRecursively(IBlock block)
       {
-        return !string.IsNullOrEmpty(block.Name) && block.Children.OfType<IBlock>().All(AssertBlockNamesRecursively);
+        return !string.IsNullOrEmpty(block.Id) && block.Children.OfType<IBlock>().All(AssertBlockIdsRecursively);
       }
 
-      Assert.IsTrue(AssertBlockNamesRecursively(iblock));
+      Assert.IsTrue(AssertBlockIdsRecursively(iblock));
     }
   }
 }
