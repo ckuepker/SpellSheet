@@ -6,7 +6,25 @@
     "Probe3": "KO",
     "ZfW": 15,
     "ZD": 2,
-    "ZDEinheit": "AR"
+    "ZDEinheit": "AR",
+    "Kosten": 9,
+    "KostenEinheit": "AsP",
+    "Reichweite": 7,
+    "ReichweiteEinheit": "Schritt",
+    "Wirkungsdauer": "ZfP*",
+    "WirkungsdauerEinheit": "KR",
+    "Effekte": [
+      {
+        "Typ": "Schaden",
+        "Schaden": "ZfP*",
+        "SchadenEinheit": "SP(A)"
+      },
+      {
+        "Typ": "Debuff",
+        "Staerke": "-4",
+        "Attribute": "AT, PA, Ausweichen, Ini, GE, FF, KK"
+      }
+    ]
   },
   {
     "Name": "Ignifaxius",
@@ -15,6 +33,22 @@
     "Probe3": "KO",
     "ZfW": 11,
     "ZD": 4,
-    "ZDEinheit": "AR"
+    "ZDEinheit": "AR",
+    "Kosten": "1 pro SP",
+    "KostenEinheit": "AsP",
+    "Reichweite": 21,
+    "ReichweiteEinheit": "Schritt",
+    "Effekte": [
+      {
+        "Typ": "Schaden",
+        "Schaden": "ZfW x W6",
+        "SchadenEinheit": "TP"
+      },
+      {
+        "Typ": "Debuff",
+        "Staerke": "-1",
+        "Attribute": "permanente RS pro 10TP"
+      }
+    ]
   }
 ]
