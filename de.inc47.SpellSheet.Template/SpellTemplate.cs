@@ -29,9 +29,11 @@ namespace de.inc47.SpellSheet.Template
     private IRenderable RenderZauberdauer(ISpell spell)
     {
       var block = new Block("ZD");
-      var label = new Text(8, 4, 5, 1, "Zauberdauer:", TextStyle.Label);
+      var label = new Text(8, 4, 5, 2, "Zauberdauer:", TextStyle.Label);
+      var zauberDauerText = new Text(8,9,24,1,string.Format("{0} {1}",spell.ZD, spell.ZDEinheit), TextStyle.Default);
       block.Children.Add(label);
-      var dauer = new Numeric(8, 9, 24, 1, NumericStyle.Boxes, spell.ZD, spell.ZDEinheit.ToString());
+      block.Children.Add(zauberDauerText);
+      var dauer = new Numeric(9, 9, 24, 1, NumericStyle.Boxes, spell.ZD);
       block.Children.Add(dauer);
       return block;
     }

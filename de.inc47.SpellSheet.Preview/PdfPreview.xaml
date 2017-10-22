@@ -8,7 +8,6 @@
   <UserControl.Resources>
     <ResourceDictionary>
       <Style TargetType="{x:Type TextBlock}" x:Key="DefaultTextStyle">
-        <Setter Property="TextAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="Morpheus" />
       </Style>
       
@@ -19,10 +18,11 @@
       <Style TargetType="{x:Type TextBlock}" x:Key="HeaderTextStyle" BasedOn="{StaticResource DefaultTextStyle}">
         <Setter Property="FontSize" Value="22" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
       </Style>
 
       <Style TargetType="{x:Type TextBlock}" x:Key="NumericSuffixTextStyle" BasedOn="{StaticResource DefaultTextStyle}">
-        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="Margin" Value="0,0,0,0" />
       </Style>
       
       <Style TargetType="{x:Type Rectangle}" x:Key="NumericRectangleStyle">
@@ -30,7 +30,7 @@
         <Setter Property="Fill" Value="Transparent" />        
         <Setter Property="Width" Value="12" />
         <Setter Property="Height" Value="12" />
-        <Setter Property="Margin" Value="5,1,0,0" />
+        <Setter Property="Margin" Value="0,1,5,0" />
       </Style>
     </ResourceDictionary>
   </UserControl.Resources>
