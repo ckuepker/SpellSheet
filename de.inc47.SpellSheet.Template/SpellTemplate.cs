@@ -29,9 +29,9 @@ namespace de.inc47.SpellSheet.Template
     private IRenderable RenderZauberdauer(ISpell spell)
     {
       var block = new Block("ZD");
-      var label = new Text(8, 0, 5, 1, "Zauberdauer:", TextStyle.Label);
+      var label = new Text(8, 4, 5, 1, "Zauberdauer:", TextStyle.Label);
       block.Children.Add(label);
-      var dauer = new Numeric(8, 5, 20, 1, NumericStyle.Boxes, spell.ZD, spell.ZDEinheit.ToString());
+      var dauer = new Numeric(8, 9, 24, 1, NumericStyle.Boxes, spell.ZD, spell.ZDEinheit.ToString());
       block.Children.Add(dauer);
       return block;
     }
@@ -39,16 +39,15 @@ namespace de.inc47.SpellSheet.Template
     private IRenderable RenderProbe(ISpell spell, ICharacterInformation info)
     {
       IBlock b = new Block("ProbeBlock");
-      string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(),
-        spell.Probe3.ToString());
-      b.Children.Add(new Text(4, 0, 4, 1, probe, TextStyle.Label));
+      string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(), spell.Probe3.ToString());
+      b.Children.Add(new Text(7, AvailableColumns-4, 4, 1, probe, TextStyle.Label));
       string probenWerte = string.Format("{0}/{1}/{2}{3}{4}",
         info.GetEigenschaft(spell.Probe1),
         info.GetEigenschaft(spell.Probe2),
         info.GetEigenschaft(spell.Probe3),
         spell.ZfW > 0 ? "+" : "-",
         spell.ZfW);
-      b.Children.Add(new Text(5, 0, 4, 1, probenWerte, TextStyle.Default));
+      b.Children.Add(new Text(8, AvailableColumns-4, 4, 1, probenWerte, TextStyle.Default));
       return b;
     }
 
