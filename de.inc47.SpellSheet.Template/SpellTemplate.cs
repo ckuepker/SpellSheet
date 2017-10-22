@@ -22,7 +22,18 @@ namespace de.inc47.SpellSheet.Template
       root.Children.Add(RenderSpellName(spell.Name));
       root.Children.Add(RenderProbe(spell, info));
       root.Children.Add(RenderZfW(spell.ZfW));
+      root.Children.Add(RenderZauberdauer(spell));
       return root;
+    }
+
+    private IRenderable RenderZauberdauer(ISpell spell)
+    {
+      var block = new Block("ZD");
+      var label = new Text(8, 0, 5, 1, "Zauberdauer:", TextStyle.Label);
+      block.Children.Add(label);
+      var dauer = new Numeric(8, 5, 20, 1, NumericStyle.Boxes, spell.ZD, spell.ZDEinheit.ToString());
+      block.Children.Add(dauer);
+      return block;
     }
 
     private IRenderable RenderProbe(ISpell spell, ICharacterInformation info)

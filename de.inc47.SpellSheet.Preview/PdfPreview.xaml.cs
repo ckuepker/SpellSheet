@@ -116,7 +116,31 @@ namespace de.inc47.SpellSheet.Preview
 
     public void Render(INumeric numeric)
     {
-      throw new System.NotImplementedException();
+      var sp = new StackPanel();
+      sp.Orientation = Orientation.Horizontal;
+      for (int i = 0; i < numeric.Number; i++)
+      {
+        var r = new Rectangle();
+        r.Stroke = new SolidColorBrush(Colors.Black);
+        r.Fill = new SolidColorBrush(Colors.Transparent);
+        r.Width = 12;
+        r.Height = 12;
+        r.Margin = new Thickness(5, 0, 0, 3);
+        sp.Children.Add(r);
+      }
+      if (numeric.Suffix != string.Empty)
+      {
+        var tb = new TextBlock();
+        tb.Style = (Style) FindResource("DefaultTextStyle");
+        tb.Text = numeric.Suffix;
+        sp.Children.Add(tb);
+      }
+      Grid.SetRow(sp, numeric.Row);
+      Grid.SetColumn(sp, numeric.Column);
+      Grid.SetRowSpan(sp, numeric.Height);
+      Grid.SetColumnSpan(sp, numeric.Width);
+      ClearGrid(numeric.Row, numeric.Column, numeric.Width, numeric.Height);
+      PreviewGrid.Children.Add(sp);
     }
 
     private void ClearGrid(int row, int column, int width, int height)

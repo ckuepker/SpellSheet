@@ -11,13 +11,29 @@ namespace de.inc47.SpellSheet.Template.Test
   public class SpellTemplateTest
   {
     [Test]
+    public void TestApplyZauberdauer()
+    {
+      var spellMock = new Mock<ISpell>();
+      var characterMock = new Mock<ICharacterInformation>();
+      spellMock.Setup(m => m.ZD).Returns(7).Verifiable();
+      spellMock.Setup(m => m.ZDEinheit).Returns(Zeiteinheit.AR).Verifiable();
+
+      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
+      IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+
+      spellMock.Verify(m => m.ZD, Times.Once);
+      spellMock.Verify(m => m.ZDEinheit, Times.Once);
+      Assert.IsTrue(block.ContainsChild(r => r.Id == "ZD"));
+    }
+
+    [Test]
     public void TestApplyZfW()
     {
       var spellMock = new Mock<ISpell>();
       var characterMock = new Mock<ICharacterInformation>();
       spellMock.Setup(m => m.ZfW).Returns(15).Verifiable();
 
-      ITemplate<Tuple<ISpell,ICharacterInformation>> sut = new SpellTemplate();
+      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
       IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
       spellMock.Verify(m => m.ZfW, Times.AtLeastOnce);
@@ -49,7 +65,7 @@ namespace de.inc47.SpellSheet.Template.Test
 
       var sut = new SpellTemplate();
       var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
-      
+
       spellMock.Verify(s => s.Name, Times.Once);
     }
 
@@ -68,7 +84,7 @@ namespace de.inc47.SpellSheet.Template.Test
       var sut = new SpellTemplate();
       var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
-      spellMock.Verify(s => s.Probe1,Times.AtLeastOnce);
+      spellMock.Verify(s => s.Probe1, Times.AtLeastOnce);
       spellMock.Verify(s => s.Probe2, Times.AtLeastOnce);
       spellMock.Verify(s => s.Probe3, Times.AtLeastOnce);
 
@@ -83,7 +99,7 @@ namespace de.inc47.SpellSheet.Template.Test
       var spellMock = new Mock<ISpell>();
       var characterMock = new Mock<ICharacterInformation>();
 
-      ITemplate<Tuple<ISpell,ICharacterInformation>> sut = new SpellTemplate();
+      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
       var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
       bool AssertBlockIdsRecursively(IBlock block)
