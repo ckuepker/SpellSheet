@@ -121,17 +121,13 @@ namespace de.inc47.SpellSheet.Preview
       for (int i = 0; i < numeric.Number; i++)
       {
         var r = new Rectangle();
-        r.Stroke = new SolidColorBrush(Colors.Black);
-        r.Fill = new SolidColorBrush(Colors.Transparent);
-        r.Width = 12;
-        r.Height = 12;
-        r.Margin = new Thickness(5, 0, 0, 3);
+        r.Style = (Style) FindResource("NumericRectangleStyle");
         sp.Children.Add(r);
       }
       if (numeric.Suffix != string.Empty)
       {
         var tb = new TextBlock();
-        tb.Style = (Style) FindResource("DefaultTextStyle");
+        tb.Style = (Style) FindResource("NumericSuffixTextStyle");
         tb.Text = numeric.Suffix;
         sp.Children.Add(tb);
       }
