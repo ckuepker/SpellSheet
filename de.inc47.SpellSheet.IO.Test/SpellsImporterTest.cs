@@ -8,16 +8,30 @@ namespace de.inc47.SpellSheet.IO.Test
 {
   public class SpellsImporterTest
   {
+    private IList<ISpell> _spells;
+
+    [SetUp]
+    public void SetUp()
+    {
+      Assert.Null(_spells);
+      string path = TestContext.CurrentContext.TestDirectory + "/TestFiles/spells.json";
+      ISpellsImporter sut = new SpellsImporter();
+      _spells = sut.Import(path).ToList();
+      Assert.AreEqual(2, _spells.Count);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+      _spells = null;
+    }
+
     [Test]
     public void TestImport()
     {
-      string path = TestContext.CurrentContext.TestDirectory + "/TestFiles/spells.json";
-      ISpellsImporter sut = new SpellsImporter();
-      IEnumerable<ISpell> spells = sut.Import(path);
-      var spellList = spells.ToList();
-      Assert.AreEqual(2, spellList.Count);
-      ISpell c = spellList[0];
-      ISpell i = spellList[1];
+      
+      ISpell c = _spells[0];
+      ISpell i = _spells[1];
       Assert.AreEqual("Corpofrigo", c.Name);
       Assert.AreEqual(15, c.ZfW);
       Assert.AreEqual(2, c.ZD);
