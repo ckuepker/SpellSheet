@@ -21,7 +21,7 @@ namespace de.inc47.SpellSheet.Template.Test
       ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
       IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
 
-      spellMock.Verify(m => m.ZD, Times.Once);
+      spellMock.Verify(m => m.ZD, Times.AtLeastOnce);
       spellMock.Verify(m => m.ZDEinheit, Times.Once);
       Assert.IsTrue(block.ContainsChild(r => r.Id == "ZD"));
     }
