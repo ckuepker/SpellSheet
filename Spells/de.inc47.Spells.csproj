@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharacterInformation.cs" />
+    <Compile Include="Enumerations\DistanzEinheit.cs" />
     <Compile Include="Enumerations\Eigenschaft.cs" />
     <Compile Include="Enumerations\Zeiteinheit.cs" />
     <Compile Include="ICharacterInformation.cs" />

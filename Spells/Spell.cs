@@ -5,12 +5,14 @@ namespace de.inc47.Spells
 {
   public class Spell : ISpell
   {
-    public Spell(string name, int zfW, int zd, Zeiteinheit zdEinheit, string probe1, string probe2, string probe3)
+    public Spell(string name, int zfW, int zd, Zeiteinheit zdEinheit, string probe1, string probe2, string probe3, int reichweite, DistanzEinheit reichweiteEinheit)
     {
       Name = name;
       ZfW = zfW;
       ZD = zd;
       ZDEinheit = zdEinheit;
+      Reichweite = reichweite;
+      ReichweiteEinheit = reichweiteEinheit;
       Probe1 = GetEigenschaftFromString(probe1);
       Probe2 = GetEigenschaftFromString(probe2);
       Probe3 = GetEigenschaftFromString(probe3);
@@ -47,5 +49,7 @@ namespace de.inc47.Spells
     public Eigenschaft Probe1 { get; }
     public Eigenschaft Probe2 { get; }
     public Eigenschaft Probe3 { get; }
+    public int Reichweite { get; }
+    public DistanzEinheit ReichweiteEinheit { get; }
   }
 }

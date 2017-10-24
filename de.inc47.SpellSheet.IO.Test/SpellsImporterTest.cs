@@ -27,6 +27,15 @@ namespace de.inc47.SpellSheet.IO.Test
     }
 
     [Test]
+    [TestCase(0,7,DistanzEinheit.Schritt)]
+    public void TestImportReichweite(int spellIndex, int expectedDistanz, DistanzEinheit expectedDistanzEinheit)
+    {
+      ISpell s = _spells[spellIndex];
+      Assert.AreEqual(expectedDistanz, s.Reichweite);
+      Assert.AreEqual(expectedDistanzEinheit, s.ReichweiteEinheit);
+    }
+
+    [Test]
     public void TestImport()
     {
       

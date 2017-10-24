@@ -15,5 +15,7 @@ namespace de.inc47.Spells
     Eigenschaft Probe1 { get; }
     Eigenschaft Probe2 { get; }
     Eigenschaft Probe3 { get; }
+    int Reichweite { get; }
+    DistanzEinheit ReichweiteEinheit { get; }
   }
 }
