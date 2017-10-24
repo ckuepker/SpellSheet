@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
 using de.inc47.Spells.Enumerations;
 
 namespace de.inc47.Spells
@@ -23,7 +22,7 @@ namespace de.inc47.Spells
       Astralenergie = astralenergie;
     }
 
-    private static Dictionary<Eigenschaft, Func<ICharacterInformation,int>> _eigenschaftToPropertyMap = new Dictionary<Eigenschaft, Func<ICharacterInformation,int>> {
+    private static readonly Dictionary<Eigenschaft, Func<ICharacterInformation, int>> EigenschaftToPropertyMap = new Dictionary<Eigenschaft, Func<ICharacterInformation, int>> {
       {Eigenschaft.CH, i => i.Charisma},
       {Eigenschaft.FF, i => i.Fingerfertigkeit},
       {Eigenschaft.GE, i => i.Gewandheit},
@@ -32,7 +31,7 @@ namespace de.inc47.Spells
       {Eigenschaft.KL, i => i.Klugheit},
       {Eigenschaft.KO, i => i.Konstitution},
       {Eigenschaft.MU, i => i.Mut},
-      };
+    };
 
 
     public string Name { get; }
@@ -49,7 +48,7 @@ namespace de.inc47.Spells
     public int Astralenergie { get; }
     public int GetEigenschaft(Eigenschaft e)
     {
-      return _eigenschaftToPropertyMap[e](this);
+      return EigenschaftToPropertyMap[e](this);
     }
   }
 }
