@@ -23,14 +23,25 @@ namespace de.inc47.SpellSheet.Template
       root.Children.Add(RenderProbe(spell, info));
       root.Children.Add(RenderZfW(spell.ZfW));
       root.Children.Add(RenderZauberdauer(spell));
+      root.Children.Add(RenderReichweite(spell));
       return root;
+    }
+
+    private IRenderable RenderReichweite(ISpell spell)
+    {
+      var block = new Block("Reichweite");
+      var label = new Text(15, 0, 5, 1, "Reichweite:", TextStyle.Label);
+      var content = new Text(15, 5, 4, 1, string.Format("{0} {1}", spell.Reichweite, spell.ReichweiteEinheit), TextStyle.Default);
+      block.Children.Add(label);
+      block.Children.Add(content);
+      return block;
     }
 
     private IRenderable RenderZauberdauer(ISpell spell)
     {
       var block = new Block("ZD");
       var label = new Text(8, 4, 5, 2, "Zauberdauer:", TextStyle.Label);
-      var zauberDauerText = new Text(8,9,24,1,string.Format("{0} {1}",spell.ZD, spell.ZDEinheit), TextStyle.Default);
+      var zauberDauerText = new Text(8, 9, 24, 1, string.Format("{0} {1}", spell.ZD, spell.ZDEinheit), TextStyle.Default);
       block.Children.Add(label);
       block.Children.Add(zauberDauerText);
       var dauer = new Numeric(9, 9, 24, 1, NumericStyle.Boxes, spell.ZD);
@@ -42,14 +53,14 @@ namespace de.inc47.SpellSheet.Template
     {
       IBlock b = new Block("ProbeBlock");
       string probe = string.Format("{0}/{1}/{2}", spell.Probe1.ToString(), spell.Probe2.ToString(), spell.Probe3.ToString());
-      b.Children.Add(new Text(7, AvailableColumns-4, 4, 1, probe, TextStyle.Label));
+      b.Children.Add(new Text(7, AvailableColumns - 4, 4, 1, probe, TextStyle.Label));
       string probenWerte = string.Format("{0}/{1}/{2}{3}{4}",
         info.GetEigenschaft(spell.Probe1),
         info.GetEigenschaft(spell.Probe2),
         info.GetEigenschaft(spell.Probe3),
         spell.ZfW > 0 ? "+" : "-",
         spell.ZfW);
-      b.Children.Add(new Text(8, AvailableColumns-4, 4, 1, probenWerte, TextStyle.Default));
+      b.Children.Add(new Text(8, AvailableColumns - 4, 4, 1, probenWerte, TextStyle.Default));
       return b;
     }
 

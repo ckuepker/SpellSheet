@@ -3,6 +3,7 @@ using System.Linq;
 using de.inc47.Spells;
 using de.inc47.Spells.Enumerations;
 using de.inc47.SpellSheet.Render;
+using de.inc47.SpellSheet.Render.Enum;
 using Moq;
 using NUnit.Framework;
 
@@ -10,6 +11,27 @@ namespace de.inc47.SpellSheet.Template.Test
 {
   public class SpellTemplateTest
   {
+    [Test]
+    public void TestApplyReichweite()
+    {
+      var spellMock = new Mock<ISpell>();
+      var characterMock = new Mock<ICharacterInformation>();
+      spellMock.Setup(m => m.Reichweite).Returns(7).Verifiable();
+      spellMock.Setup(m => m.ReichweiteEinheit).Returns(DistanzEinheit.Schritt).Verifiable();
+
+      ITemplate<Tuple<ISpell,ICharacterInformation>> sut = new SpellTemplate();
+      IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+
+      Assert.IsTrue(block.ContainsChild(r => r.Id == "Reichweite"));
+      IBlock reichweiteBlock = block.FindChild<IBlock>(b => b.Id == "Reichweite");
+      IText label = reichweiteBlock.Children.OfType<IText>().FirstOrDefault(r => r.Style == TextStyle.Label);
+      Assert.NotNull(label);
+      Assert.AreEqual("Reichweite:", label.Content);
+      IText content = reichweiteBlock.Children.OfType<IText>().FirstOrDefault(r => r.Style != TextStyle.Label);
+      Assert.NotNull(content);
+      Assert.AreEqual("7 Schritt", content.Content);
+    }
+
     [Test]
     public void TestApplyZauberdauer()
     {
