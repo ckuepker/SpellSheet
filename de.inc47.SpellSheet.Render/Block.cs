@@ -43,6 +43,27 @@ namespace de.inc47.SpellSheet.Render
       return false;
     }
 
+    public IRenderable FindChild(Func<IRenderable, bool> condition)
+    {
+      return FindChild<IRenderable>(condition);
+    }
+
+    public T FindChild<T>(Func<T, bool> condition) where T : IRenderable
+    {
+      foreach (var c in Children.OfType<T>())
+      {
+        if (condition(c))
+        {
+          return c;
+        }
+      }
+      foreach (IBlock b in Children.OfType<IBlock>())
+      {
+        return b.FindChild<T>(condition);
+      }
+      return default(T);
+    }
+
     public string Id { get; }
 
     public int Column {
