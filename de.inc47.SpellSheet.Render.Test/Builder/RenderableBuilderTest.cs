@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using de.inc47.SpellSheet.Render.Builder;
 using de.inc47.SpellSheet.Render.Enum;
 using NUnit.Framework;
@@ -48,6 +49,31 @@ namespace de.inc47.SpellSheet.Render.Test.Builder
       IText sut = new RenderableBuilder().Above(target).Text();
       Assert.AreEqual(0, sut.Row);
       Assert.AreEqual(2, sut.Column);
+    }
+
+    [Test]
+    public void TestLeftOf()
+    {
+      IRenderable target = new Text(1, 2, 3, 4, "", TextStyle.Default);
+      IText sut = new RenderableBuilder().LeftOf(target).Text();
+      Assert.AreEqual(1, sut.Row);
+      Assert.AreEqual(1, sut.Column);
+    }
+
+    [Test]
+    public void TestLeftOfThrowsExceptionOnExceedLimits()
+    {
+      IRenderable target = new Text(1, 0, 3, 4, "", TextStyle.Default);
+      IRenderableBuilder sut = new RenderableBuilder();
+      Assert.Throws<ArgumentException>(() => sut.LeftOf(target));
+    }
+
+    [Test]
+    public void TestAboveThrowsExceptionOnExceedLimits()
+    {
+      IRenderable target = new Text(0, 2, 3, 4, "", TextStyle.Default);
+      IRenderableBuilder sut = new RenderableBuilder();
+      Assert.Throws<ArgumentException>(() => sut.Above(target));
     }
   }
 }
