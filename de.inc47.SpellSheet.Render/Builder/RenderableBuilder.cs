@@ -4,7 +4,7 @@ namespace de.inc47.SpellSheet.Render.Builder
 {
   public class RenderableBuilder : IRenderableBuilder
   {
-    private int _row = 0, _column = 0, _width = 0, _height = 0;
+    private int _row = 0, _column = 0, _width = 1, _height = 1;
 
     public IRenderableBuilder Below(IRenderable target)
     {
@@ -20,7 +20,14 @@ namespace de.inc47.SpellSheet.Render.Builder
       return this;
     }
 
-    public IText Text(string content, TextStyle style)
+    public IRenderableBuilder Above(IRenderable target)
+    {
+      _row = target.Row - _height;
+      _column = target.Column;
+      return this;
+    }
+
+    public IText Text(string content = "", TextStyle style = TextStyle.Default)
     {
       return new Text(_row, _column, _width, _height, content, style);
     }

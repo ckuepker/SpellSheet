@@ -6,6 +6,7 @@ namespace de.inc47.SpellSheet.Render.Builder
   {
     IRenderableBuilder Below(IRenderable target);
     IRenderableBuilder RightOf(IRenderable target);
-    IText Text(string content, TextStyle style);
+    IRenderableBuilder Above(IRenderable target);
+    IText Text(string content = "", TextStyle style = TextStyle.Default);
   }
 }
