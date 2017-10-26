@@ -75,5 +75,13 @@ namespace de.inc47.SpellSheet.Render.Test.Builder
       IRenderableBuilder sut = new RenderableBuilder();
       Assert.Throws<ArgumentException>(() => sut.Above(target));
     }
+
+    [Test]
+    public void TestDefaultPosition()
+    {
+      IRenderable sut = new RenderableBuilder().Text();
+      Assert.AreEqual(0, sut.Row);
+      Assert.AreEqual(0, sut.Column);
+    }
   }
 }
