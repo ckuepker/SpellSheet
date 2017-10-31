@@ -38,7 +38,7 @@
     </Grid>
     <StackPanel Grid.Column="1" Orientation="Vertical">
       <local:PdfPreview x:Name="Preview" Renderable="{Binding Renderable}"/>
-      <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedItem}" />
+      <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedSpell}" />
     </StackPanel>
   </Grid>
 </Window>

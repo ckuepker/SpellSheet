@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using de.inc47.Spells;
 using de.inc47.SpellSheet.Render;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel
@@ -9,5 +10,6 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     string SelectedFont { get; set; }
     bool ShowGrid { get; set; }
     IRenderable Renderable { get; set; }
+    ISpell SelectedSpell { get; set; }
   }
 }

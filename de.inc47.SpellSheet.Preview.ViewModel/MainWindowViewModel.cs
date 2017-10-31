@@ -16,6 +16,7 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     private string _selectedFont;
     private bool _showGrid;
     private IRenderable _renderable;
+    private ISpell _selectedSpell;
 
     public MainWindowViewModel()
     {
@@ -52,7 +53,17 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     }
 
     public IEnumerable<ISpell> Spells { get; set; }
-    public ISpell SelectedItem { get; set; }
+
+    public ISpell SelectedSpell
+    {
+      get { return _selectedSpell; }
+      set
+      {
+        _selectedSpell = value;
+        OnPropertyChanged("SelectedSpell");
+        
+      }
+    }
 
     public IRenderable Renderable
     {

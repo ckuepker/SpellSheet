@@ -1,6 +1,9 @@
-﻿using de.inc47.SpellSheet.Preview.ViewModel.Test.Extension;
+﻿using System.Linq.Expressions;
+using de.inc47.Spells;
+using de.inc47.SpellSheet.Preview.ViewModel.Test.Extension;
 using de.inc47.SpellSheet.Render;
 using de.inc47.SpellSheet.Render.Enum;
+using Moq;
 using NUnit.Framework;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel.Test
@@ -59,6 +62,23 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
       IMainWindowViewModel sut = new MainWindowViewModel();
       Assert.Null(sut.Renderable);
       sut.ShouldNotifyOn(s => s.Renderable).When(s => s.Renderable = new Text(0,0,0,0,"",TextStyle.Default));
+    }
+
+    [Test]
+    public void TestSelectedSpell()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      ISpell spell = new Mock<ISpell>().Object;
+      sut.ShouldNotifyOn(model => model.SelectedSpell).When(model => model.SelectedSpell = spell);
+      Assert.AreEqual(spell, sut.SelectedSpell);
+    }
+
+    [Test]
+    public void TestSelectedSpellNotifiesRenderableOnChange()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      ISpell spell = new Mock<ISpell>().Object;
+      sut.ShouldNotifyOn(model => model.Renderable).When(model => model.SelectedSpell = spell);
     }
   }
 }
