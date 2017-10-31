@@ -17,11 +17,14 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     private bool _showGrid;
     private IRenderable _renderable;
     private ISpell _selectedSpell;
+    private ICharacterInformation _characterInformation;
 
-    public MainWindowViewModel()
+    public MainWindowViewModel(IEnumerable<ISpell> spells = null, ICharacterInformation character = null)
     {
       SelectedFont = AvailableFonts[0];
       ShowGrid = true;
+      CharacterInformation = character;
+      Spells = spells;
     }
 
     public ObservableCollection<string> AvailableFonts
@@ -62,6 +65,16 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
         _selectedSpell = value;
         OnPropertyChanged("SelectedSpell");
         
+      }
+    }
+
+    public ICharacterInformation CharacterInformation
+    {
+      get { return _characterInformation; }
+      set
+      {
+        _characterInformation = value;
+        OnPropertyChanged("CharacterInformation");
       }
     }
 

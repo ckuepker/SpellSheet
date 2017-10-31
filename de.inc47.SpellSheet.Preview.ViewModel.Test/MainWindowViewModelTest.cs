@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Collections.Generic;
+using System.Linq.Expressions;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.Preview.ViewModel.Test.Extension;
 using de.inc47.SpellSheet.Render;
@@ -79,6 +80,38 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
       IMainWindowViewModel sut = new MainWindowViewModel();
       ISpell spell = new Mock<ISpell>().Object;
       sut.ShouldNotifyOn(model => model.Renderable).When(model => model.SelectedSpell = spell);
+    }
+
+    [Test]
+    public void TestCharacterInformation()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      var c = new Mock<ICharacterInformation>().Object;
+      sut.ShouldNotifyOn(model => model.CharacterInformation).When(model => model.CharacterInformation = c);
+      Assert.AreEqual(c, sut.CharacterInformation);
+    }
+
+    [Test]
+    public void TestCharacterInformationNotifiesRenderableOnChange()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      var c = new Mock<ICharacterInformation>().Object;
+      sut.ShouldNotifyOn(model => model.Renderable).When(model => model.CharacterInformation = c);
+    }
+
+    [Test]
+    public void TestMainWindowViewModel()
+    {
+      IEnumerable<ISpell> spells = new List<ISpell>
+      {
+        new Mock<ISpell>().Object,
+        new Mock<ISpell>().Object
+      };
+      ICharacterInformation c = new Mock<ICharacterInformation>().Object;
+      IMainWindowViewModel sut = new MainWindowViewModel(spells, c);
+
+      CollectionAssert.AreEqual(spells, sut.Spells);
+      Assert.AreEqual(c, sut.CharacterInformation);
     }
   }
 }
