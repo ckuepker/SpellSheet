@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:de.inc47.SpellSheet.Preview"
+        xmlns:controls="clr-namespace:de.inc47.SpellSheet.Preview.Controls"
         mc:Ignorable="d"
         Title="SpellSheet PDF Preview" MaxHeight="1080" MaxWidth="1920"
         SizeToContent="WidthAndHeight" Left="100" Top="25">
@@ -35,6 +36,9 @@
         </StackPanel>
       </StackPanel>
     </Grid>
-    <local:PdfPreview Grid.Column="1" x:Name="Preview" />
+    <StackPanel Grid.Column="1" Orientation="Vertical">
+      <local:PdfPreview x:Name="Preview" Renderable="{Binding Renderable}"/>
+      <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedItem}" />
+    </StackPanel>
   </Grid>
 </Window>

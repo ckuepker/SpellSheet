@@ -1,4 +1,6 @@
 ﻿using de.inc47.SpellSheet.Preview.ViewModel.Test.Extension;
+using de.inc47.SpellSheet.Render;
+using de.inc47.SpellSheet.Render.Enum;
 using NUnit.Framework;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel.Test
@@ -49,6 +51,14 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
       Assert.IsTrue(sut.ShowGrid, "ShowGrid by default");
 
       sut.ShouldNotifyOn(s => s.ShowGrid).When(s => sut.ShowGrid = false);
+    }
+
+    [Test]
+    public void TestRenderable()
+    {
+      IMainWindowViewModel sut = new MainWindowViewModel();
+      Assert.Null(sut.Renderable);
+      sut.ShouldNotifyOn(s => s.Renderable).When(s => s.Renderable = new Text(0,0,0,0,"",TextStyle.Default));
     }
   }
 }

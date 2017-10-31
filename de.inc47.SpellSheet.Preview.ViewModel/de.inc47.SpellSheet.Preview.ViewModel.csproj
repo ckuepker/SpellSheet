@@ -51,6 +51,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelBase.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\de.inc47.SpellSheet.Render\de.inc47.SpellSheet.Render.csproj">
+      <Project>{0EDFBFCD-1890-46A1-8D92-13E8A3DB69B6}</Project>
+      <Name>de.inc47.SpellSheet.Render</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\de.inc47.Spells\de.inc47.Spells.csproj">
+      <Project>{313AA155-6D15-4BFC-802D-CEF7C73C611F}</Project>
+      <Name>de.inc47.Spells</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

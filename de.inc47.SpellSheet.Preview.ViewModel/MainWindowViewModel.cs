@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using de.inc47.Spells;
+using de.inc47.SpellSheet.Render;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel
 {
@@ -46,5 +49,9 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
         OnPropertyChanged("ShowGrid");
       }
     }
+
+    public IEnumerable<ISpell> Spells { get; set; }
+    public ISpell SelectedItem { get; set; }
+    public IRenderable Renderable { get; set; }
   }
 }

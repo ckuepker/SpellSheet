@@ -5,9 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using de.inc47.Spells;
 using de.inc47.SpellSheet.Preview.ViewModel;
 using de.inc47.SpellSheet.Render;
 using de.inc47.SpellSheet.Render.Enum;
+using de.inc47.SpellSheet.Template;
 
 namespace de.inc47.SpellSheet.Preview
 {
@@ -16,6 +18,19 @@ namespace de.inc47.SpellSheet.Preview
   /// </summary>
   public partial class PdfPreview : UserControl, IRenderer
   {
+    public static readonly DependencyProperty RenderableProperty = DependencyProperty.Register(
+      "Renderable", typeof(IRenderable), typeof(PdfPreview), new PropertyMetadata(default(IRenderable)));
+
+    public IRenderable Renderable
+    {
+      get { return (IRenderable) GetValue(RenderableProperty); }
+      set
+      {
+        SetValue(RenderableProperty, value);
+        Render(Renderable);
+      }
+    }
+
     private readonly int _columns, _rows;
     private readonly int _gridsize = 15;
 

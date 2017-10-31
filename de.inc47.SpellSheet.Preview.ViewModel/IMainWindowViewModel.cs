@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using de.inc47.SpellSheet.Render;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel
 {
@@ -8,5 +8,6 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     ObservableCollection<string> AvailableFonts { get; }
     string SelectedFont { get; set; }
     bool ShowGrid { get; set; }
+    IRenderable Renderable { get; set; }
   }
 }
