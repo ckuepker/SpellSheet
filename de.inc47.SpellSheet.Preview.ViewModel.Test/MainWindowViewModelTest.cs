@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System;
+using System.Collections.Generic;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.Preview.ViewModel.Test.Extension;
 using de.inc47.SpellSheet.Render;
 using de.inc47.SpellSheet.Render.Enum;
+using de.inc47.SpellSheet.Template;
 using Moq;
 using NUnit.Framework;
 
@@ -77,9 +78,11 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestSelectedSpellNotifiesRenderableOnChange()
     {
-      IMainWindowViewModel sut = new MainWindowViewModel();
+      var templateMock = new Mock<ISpellTemplate>();
+      IMainWindowViewModel sut = new MainWindowViewModel(template: templateMock.Object);
       ISpell spell = new Mock<ISpell>().Object;
       sut.ShouldNotifyOn(model => model.Renderable).When(model => model.SelectedSpell = spell);
+      templateMock.Verify(t => t.Apply(It.IsAny<ISpell>(), It.IsAny<ICharacterInformation>()), Times.Once);
     }
 
     [Test]
@@ -94,9 +97,11 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
     [Test]
     public void TestCharacterInformationNotifiesRenderableOnChange()
     {
-      IMainWindowViewModel sut = new MainWindowViewModel();
+      var templateMock = new Mock<ISpellTemplate>();
+      IMainWindowViewModel sut = new MainWindowViewModel(template: templateMock.Object);
       var c = new Mock<ICharacterInformation>().Object;
       sut.ShouldNotifyOn(model => model.Renderable).When(model => model.CharacterInformation = c);
+      templateMock.Verify(t => t.Apply(It.IsAny<ISpell>(), It.IsAny<ICharacterInformation>()), Times.Once);
     }
 
     [Test]
@@ -108,10 +113,16 @@ namespace de.inc47.SpellSheet.Preview.ViewModel.Test
         new Mock<ISpell>().Object
       };
       ICharacterInformation c = new Mock<ICharacterInformation>().Object;
-      IMainWindowViewModel sut = new MainWindowViewModel(spells, c);
+      var templateMock = new Mock<ISpellTemplate>();
+      templateMock.Setup(m => m.Apply(It.IsAny<ISpell>(), It.IsAny<ICharacterInformation>()))
+        .Returns(new Block("TestId"));
+      IMainWindowViewModel sut = new MainWindowViewModel(spells, c, templateMock.Object);
 
       CollectionAssert.AreEqual(spells, sut.Spells);
       Assert.AreEqual(c, sut.CharacterInformation);
+      templateMock.Verify(t => t.Apply(It.IsAny<ISpell>(),It.IsAny<ICharacterInformation>()), Times.Once);
+      Assert.NotNull(sut.Renderable);
+      Assert.AreEqual("TestId",sut.Renderable.Id);
     }
   }
 }

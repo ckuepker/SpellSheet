@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.Render;
+using de.inc47.SpellSheet.Template;
 
 namespace de.inc47.SpellSheet.Preview.ViewModel
 {
@@ -18,13 +20,19 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
     private IRenderable _renderable;
     private ISpell _selectedSpell;
     private ICharacterInformation _characterInformation;
+    private readonly ISpellTemplate _template;
 
-    public MainWindowViewModel(IEnumerable<ISpell> spells = null, ICharacterInformation character = null)
+    public MainWindowViewModel(IEnumerable<ISpell> spells = null, ICharacterInformation character = null, ISpellTemplate template = null)
     {
       SelectedFont = AvailableFonts[0];
       ShowGrid = true;
-      CharacterInformation = character;
+      _characterInformation = character;
       Spells = spells;
+      _template = template;
+      if (Spells != null && Spells.Any() && CharacterInformation != null)
+      {
+        SelectedSpell = Spells.FirstOrDefault();
+      }
     }
 
     public ObservableCollection<string> AvailableFonts
@@ -64,7 +72,10 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
       {
         _selectedSpell = value;
         OnPropertyChanged("SelectedSpell");
-        
+        if (_template != null)
+        {
+          Renderable = _template.Apply(SelectedSpell, CharacterInformation);
+        }
       }
     }
 
@@ -75,6 +86,10 @@ namespace de.inc47.SpellSheet.Preview.ViewModel
       {
         _characterInformation = value;
         OnPropertyChanged("CharacterInformation");
+        if (_template != null)
+        {
+          Renderable = _template.Apply(SelectedSpell, CharacterInformation);
+        }
       }
     }
 

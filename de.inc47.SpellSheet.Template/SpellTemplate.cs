@@ -7,15 +7,13 @@ using de.inc47.SpellSheet.Render.Enum;
 
 namespace de.inc47.SpellSheet.Template
 {
-  public class SpellTemplate : ITemplate<Tuple<ISpell, ICharacterInformation>>
+  public class SpellTemplate : ISpellTemplate
   {
     private readonly int AvailableRows = 56;
     private readonly int AvailableColumns = 37;
 
-    public IBlock Apply(Tuple<ISpell, ICharacterInformation> data)
+    public IBlock Apply(ISpell spell, ICharacterInformation info)
     {
-      var spell = data.Item1;
-      var info = data.Item2;
       var root = new Block("RootBlock");
 
       root.Children.Add(RenderEigenschaften(info));

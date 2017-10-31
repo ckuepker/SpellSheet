@@ -19,8 +19,8 @@ namespace de.inc47.SpellSheet.Template.Test
       spellMock.Setup(m => m.Reichweite).Returns(7).Verifiable();
       spellMock.Setup(m => m.ReichweiteEinheit).Returns(DistanzEinheit.Schritt).Verifiable();
 
-      ITemplate<Tuple<ISpell,ICharacterInformation>> sut = new SpellTemplate();
-      IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      ISpellTemplate sut = new SpellTemplate();
+      IBlock block = sut.Apply(spellMock.Object, characterMock.Object);
 
       Assert.IsTrue(block.ContainsChild(r => r.Id == "Reichweite"));
       IBlock reichweiteBlock = block.FindChild<IBlock>(b => b.Id == "Reichweite");
@@ -40,8 +40,8 @@ namespace de.inc47.SpellSheet.Template.Test
       spellMock.Setup(m => m.ZD).Returns(7).Verifiable();
       spellMock.Setup(m => m.ZDEinheit).Returns(Zeiteinheit.AR).Verifiable();
 
-      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
-      IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      ISpellTemplate sut = new SpellTemplate();
+      IBlock block = sut.Apply(spellMock.Object, characterMock.Object);
 
       spellMock.Verify(m => m.ZD, Times.AtLeastOnce);
       spellMock.Verify(m => m.ZDEinheit, Times.Once);
@@ -55,8 +55,8 @@ namespace de.inc47.SpellSheet.Template.Test
       var characterMock = new Mock<ICharacterInformation>();
       spellMock.Setup(m => m.ZfW).Returns(15).Verifiable();
 
-      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
-      IBlock block = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      ISpellTemplate sut = new SpellTemplate();
+      IBlock block = sut.Apply(spellMock.Object, characterMock.Object);
 
       spellMock.Verify(m => m.ZfW, Times.AtLeastOnce);
       Assert.IsTrue(block.ContainsChild(r => r.Id == "ZfW"));
@@ -70,7 +70,7 @@ namespace de.inc47.SpellSheet.Template.Test
       characterMock.Setup(c => c.GetEigenschaft(It.IsAny<Eigenschaft>())).Returns(0).Verifiable();
 
       var sut = new SpellTemplate();
-      var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      var iblock = sut.Apply(spellMock.Object, characterMock.Object);
 
       foreach (Eigenschaft e in Enum.GetValues(typeof(Eigenschaft)))
       {
@@ -86,7 +86,7 @@ namespace de.inc47.SpellSheet.Template.Test
       spellMock.Setup(s => s.Name).Returns("SpellName").Verifiable();
 
       var sut = new SpellTemplate();
-      var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      var iblock = sut.Apply(spellMock.Object, characterMock.Object);
 
       spellMock.Verify(s => s.Name, Times.Once);
     }
@@ -104,7 +104,7 @@ namespace de.inc47.SpellSheet.Template.Test
       characterMock.Setup(c => c.GetEigenschaft(Eigenschaft.FF)).Returns(12).Verifiable();
 
       var sut = new SpellTemplate();
-      var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      var iblock = sut.Apply(spellMock.Object, characterMock.Object);
 
       spellMock.Verify(s => s.Probe1, Times.AtLeastOnce);
       spellMock.Verify(s => s.Probe2, Times.AtLeastOnce);
@@ -121,8 +121,8 @@ namespace de.inc47.SpellSheet.Template.Test
       var spellMock = new Mock<ISpell>();
       var characterMock = new Mock<ICharacterInformation>();
 
-      ITemplate<Tuple<ISpell, ICharacterInformation>> sut = new SpellTemplate();
-      var iblock = sut.Apply(new Tuple<ISpell, ICharacterInformation>(spellMock.Object, characterMock.Object));
+      ISpellTemplate sut = new SpellTemplate();
+      var iblock = sut.Apply(spellMock.Object, characterMock.Object);
 
       bool AssertBlockIdsRecursively(IBlock block)
       {

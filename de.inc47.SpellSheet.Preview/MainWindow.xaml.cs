@@ -17,16 +17,13 @@ namespace de.inc47.SpellSheet.Preview
     public MainWindow()
     {
       InitializeComponent();
-      var vm = new MainWindowViewModel();
-      DataContext = vm;
       ICharacterImporter cimport = new CharacterImporter();
       ICharacterInformation ci = cimport.Import("character.json");
       ISpellsImporter simport = new SpellsImporter();
       IEnumerable<ISpell> spells = simport.Import("spells.json");
-      vm.Spells = spells;
-      ITemplate<Tuple<ISpell,ICharacterInformation>> template = new SpellTemplate();
-      var templatedBlock = template.Apply(new Tuple<ISpell, ICharacterInformation>(spells.FirstOrDefault(), ci));
-      Preview.Render(templatedBlock);
+      var vm = new MainWindowViewModel(spells,ci,new SpellTemplate());
+      DataContext = vm;
+      Preview.Render(vm.Renderable);
     }
   }
 }
