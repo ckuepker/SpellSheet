@@ -5,8 +5,6 @@ using System.Windows;
 using de.inc47.Spells;
 using de.inc47.SpellSheet.IO;
 using de.inc47.SpellSheet.Preview.ViewModel;
-using de.inc47.SpellSheet.Render;
-using de.inc47.SpellSheet.Render.Enum;
 using de.inc47.SpellSheet.Template;
 
 namespace de.inc47.SpellSheet.Preview
