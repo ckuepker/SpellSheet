@@ -50,5 +50,25 @@
         "Attribute": "permanente RS pro 10TP"
       }
     ]
+  },
+  {
+    "Name": "Fulminictus",
+    "Probe1": "IN",
+    "Probe2": "GE",
+    "Probe3": "KO",
+    "ZfW": 2,
+    "ZD": 2,
+    "ZDEinheit": "AR",
+    "Kosten": "1 pro SP",
+    "KostenEinheit": "AsP",
+    "Reichweite": 7,
+    "ReichweiteEinheit": "Schritt",
+    "Effekte": [
+      {
+        "Typ": "Schaden",
+        "Schaden": "2W6+ZfP*",
+        "SchadenEinheit": "SP"
+      }
+    ]
   }
 ]
