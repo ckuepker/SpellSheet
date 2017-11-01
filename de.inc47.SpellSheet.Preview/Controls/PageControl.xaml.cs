@@ -22,7 +22,10 @@ namespace de.inc47.SpellSheet.Preview.Controls
     }
 
     public static readonly DependencyProperty SelectedItemProperty = DependencyProperty.Register(
-      "SelectedItem", typeof(object), typeof(PageControl), new PropertyMetadata(default(object)));
+      "SelectedItem", typeof(object), typeof(PageControl), new FrameworkPropertyMetadata(default(object))
+      {
+        BindsTwoWayByDefault = true
+      });
 
     public object SelectedItem
     {

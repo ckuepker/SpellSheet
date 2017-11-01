@@ -5,11 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using de.inc47.Spells;
-using de.inc47.SpellSheet.Preview.ViewModel;
 using de.inc47.SpellSheet.Render;
 using de.inc47.SpellSheet.Render.Enum;
-using de.inc47.SpellSheet.Template;
 
 namespace de.inc47.SpellSheet.Preview
 {
@@ -24,11 +21,7 @@ namespace de.inc47.SpellSheet.Preview
     public IRenderable Renderable
     {
       get { return (IRenderable) GetValue(RenderableProperty); }
-      set
-      {
-        SetValue(RenderableProperty, value);
-        Render(Renderable);
-      }
+      set { SetValue(RenderableProperty, value); }
     }
 
     private readonly int _columns, _rows;
@@ -39,7 +32,6 @@ namespace de.inc47.SpellSheet.Preview
 
     public PdfPreview()
     {
-      DataContext = new PdfPreviewViewModel();
       InitializeComponent();
       _columns = 37; //(21 * 2) - 5
       _rows = 56; //(29 * 2) - 2;
@@ -48,19 +40,39 @@ namespace de.inc47.SpellSheet.Preview
       InitGrid();
     }
 
+    protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+    {
+      base.OnPropertyChanged(e);
+      if (e.Property == RenderableProperty)
+      {
+        InitGrid();
+        Render(Renderable);
+      }
+    }
+
     private void InitGrid()
     {
+      PreviewGrid.Children.Clear();
+      PreviewGrid.ColumnDefinitions.Clear();
+      PreviewGrid.RowDefinitions.Clear();
+
       _gridRectangles = new List<Rectangle>();
-      for (int i = 0; i < _rows; i++)
+      for (int rowCount = 0; rowCount < _rows; rowCount++)
       {
         var rd = new RowDefinition();
         rd.Height = new GridLength(_gridsize);
         PreviewGrid.RowDefinitions.Add(rd);
+      }
+      for (int columnCount = 0; columnCount < _columns; columnCount++)
+      {
+        var cd = new ColumnDefinition();
+        cd.Width = new GridLength(_gridsize);
+        PreviewGrid.ColumnDefinitions.Add(cd);
+      }
+      for (int i = 0; i < _rows; i++)
+      {
         for (int j = 0; j < _columns; j++)
         {
-          var cd = new ColumnDefinition();
-          cd.Width = new GridLength(_gridsize);
-          PreviewGrid.ColumnDefinitions.Add(cd);
           Rectangle r = new Rectangle();
           r.Width = _gridsize;
           r.Height = _gridsize;

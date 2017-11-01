@@ -23,7 +23,7 @@ namespace de.inc47.SpellSheet.Preview
       IEnumerable<ISpell> spells = simport.Import("spells.json");
       var vm = new MainWindowViewModel(spells,ci,new SpellTemplate());
       DataContext = vm;
-      Preview.Render(vm.Renderable);
+      //Preview.Render(vm.Renderable);
     }
   }
 }
