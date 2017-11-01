@@ -37,9 +37,10 @@
         </StackPanel>
       </StackPanel>
     </Grid>
-    <StackPanel Grid.Column="1" Orientation="Vertical">
-      <local:PdfPreview x:Name="Preview" Font="{Binding SelectedFont}" Renderable="{Binding Renderable}" ShowGrid="{Binding ShowGrid}"/>
-      <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedSpell}" />
+    <StackPanel Grid.Column="1" Orientation="Vertical" Background="LightSlateGray">
+      <local:PdfPreview x:Name="Preview" Font="{Binding SelectedFont}" Renderable="{Binding Renderable}" ShowGrid="{Binding ShowGrid}"
+                        Margin="10,10,10,10" />
+      <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedSpell}" HorizontalAlignment="Center" />
     </StackPanel>
   </Grid>
 </Window>
