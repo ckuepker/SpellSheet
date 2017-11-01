@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:de.inc47.SpellSheet.Preview"
         xmlns:controls="clr-namespace:de.inc47.SpellSheet.Preview.Controls"
-        mc:Ignorable="d"
+        xmlns:viewModel="clr-namespace:de.inc47.SpellSheet.Preview.ViewModel;assembly=de.inc47.SpellSheet.Preview.ViewModel"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}"
         Title="SpellSheet PDF Preview" MaxHeight="1080" MaxWidth="1920"
         SizeToContent="WidthAndHeight" Left="100" Top="25">
   <Window.Resources>
@@ -37,7 +38,7 @@
       </StackPanel>
     </Grid>
     <StackPanel Grid.Column="1" Orientation="Vertical">
-      <local:PdfPreview x:Name="Preview" Renderable="{Binding Renderable}"/>
+      <local:PdfPreview x:Name="Preview" Font="{Binding SelectedFont}" Renderable="{Binding Renderable}"/>
       <controls:PageControl Items="{Binding Spells}" SelectedItem="{Binding SelectedSpell}" />
     </StackPanel>
   </Grid>

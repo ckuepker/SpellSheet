@@ -24,6 +24,15 @@ namespace de.inc47.SpellSheet.Preview
       set { SetValue(RenderableProperty, value); }
     }
 
+    public static readonly DependencyProperty FontProperty = DependencyProperty.Register(
+      "Font", typeof(string), typeof(PdfPreview), new PropertyMetadata(default(string)));
+
+    public string Font
+    {
+      get { return (string) GetValue(FontProperty); }
+      set { SetValue(FontProperty, value); }
+    }
+
     private readonly int _columns, _rows;
     private readonly int _gridsize = 15;
 
