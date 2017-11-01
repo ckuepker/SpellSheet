@@ -7,6 +7,19 @@
              d:DesignHeight="300" d:DesignWidth="300" x:Name="Control">
   <UserControl.Resources>
     <ResourceDictionary>
+      <Style TargetType="{x:Type Rectangle}" x:Key="GridRectangleStyle">
+        <Setter Property="Width" Value="{Binding GridSize, ElementName=Control}" />
+        <Setter Property="Height" Value="{Binding GridSize, ElementName=Control}" />
+        <Setter Property="Fill" Value="LightCyan" />
+        <Setter Property="Stroke" Value="HotPink" />
+        <Style.Triggers>
+          <DataTrigger Binding="{Binding ShowGrid, ElementName=Control}" Value="False">
+            <Setter Property="Stroke" Value="Transparent" />
+            <Setter Property="Fill" Value="Transparent" />
+          </DataTrigger>
+        </Style.Triggers>
+      </Style>
+      
       <Style TargetType="{x:Type TextBlock}" x:Key="DefaultTextStyle">
         <Setter Property="FontFamily" Value="{Binding Font, ElementName=Control}" />
       </Style>

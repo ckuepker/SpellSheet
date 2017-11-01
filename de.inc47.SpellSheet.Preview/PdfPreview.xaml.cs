@@ -33,8 +33,16 @@ namespace de.inc47.SpellSheet.Preview
       set { SetValue(FontProperty, value); }
     }
 
+    public static readonly DependencyProperty ShowGridProperty = DependencyProperty.Register(
+      "ShowGrid", typeof(bool), typeof(PdfPreview), new PropertyMetadata(default(bool)));
+
+    public bool ShowGrid
+    {
+      get { return (bool) GetValue(ShowGridProperty); }
+      set { SetValue(ShowGridProperty, value); }
+    }
+
     private readonly int _columns, _rows;
-    private readonly int _gridsize = 15;
 
     private static readonly Random Rand = new Random();
     private IList<Rectangle> _gridRectangles;
@@ -44,10 +52,11 @@ namespace de.inc47.SpellSheet.Preview
       InitializeComponent();
       _columns = 37; //(21 * 2) - 5
       _rows = 56; //(29 * 2) - 2;
-      Width = _columns * _gridsize;
-      Height = _rows * _gridsize;
+      Width = _columns * GridSize;
+      Height = _rows * GridSize;
       InitGrid();
     }
+    public int GridSize { get { return 15; } }
 
     protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
     {
@@ -69,24 +78,22 @@ namespace de.inc47.SpellSheet.Preview
       for (int rowCount = 0; rowCount < _rows; rowCount++)
       {
         var rd = new RowDefinition();
-        rd.Height = new GridLength(_gridsize);
+        rd.Height = new GridLength(GridSize);
         PreviewGrid.RowDefinitions.Add(rd);
       }
       for (int columnCount = 0; columnCount < _columns; columnCount++)
       {
         var cd = new ColumnDefinition();
-        cd.Width = new GridLength(_gridsize);
+        cd.Width = new GridLength(GridSize);
         PreviewGrid.ColumnDefinitions.Add(cd);
       }
+      Style gridStyle = (Style) FindResource("GridRectangleStyle");
       for (int i = 0; i < _rows; i++)
       {
         for (int j = 0; j < _columns; j++)
         {
           Rectangle r = new Rectangle();
-          r.Width = _gridsize;
-          r.Height = _gridsize;
-          r.Fill = new SolidColorBrush(Colors.White);
-          r.Stroke = new SolidColorBrush(Colors.HotPink);
+          r.Style = gridStyle;
           Grid.SetRow(r, i);
           Grid.SetColumn(r, j);
           PreviewGrid.Children.Add(r);
