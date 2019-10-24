@@ -17,7 +17,7 @@ namespace de.inc47.SpellSheet.IO.Test
       string path = TestContext.CurrentContext.TestDirectory + "/TestFiles/spells.json";
       ISpellsImporter sut = new SpellsImporter();
       _spells = sut.Import(path).ToList();
-      Assert.AreEqual(2, _spells.Count);
+      Assert.AreEqual(3, _spells.Count, "Spell count from spells.json should be 2");
     }
 
     [TearDown]
@@ -43,7 +43,7 @@ namespace de.inc47.SpellSheet.IO.Test
       ISpell i = _spells[1];
       Assert.AreEqual("Corpofrigo", c.Name);
       Assert.AreEqual(15, c.ZfW);
-      Assert.AreEqual(2, c.ZD);
+      Assert.AreEqual(2, c.ZD, "Zauberdauer should be 2");
       Assert.AreEqual(Zeiteinheit.AR, i.ZDEinheit);
       Assert.AreEqual(Eigenschaft.CH, c.Probe1);
       Assert.AreEqual(Eigenschaft.GE, c.Probe2);
